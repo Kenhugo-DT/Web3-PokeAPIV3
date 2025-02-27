@@ -53,6 +53,12 @@ html, body {
   transform: translate(-50%, -50%); /* Sentrerer kortet på posisjonen */
   margin-top: 50px; /* Skyver kortet nedover */
   margin-left: 35px; /* Skyver kortet til venstre/høyre */
+  transition: transform 0.3s ease;
+}
+
+#pokemon-card:hover {
+  transform: scale(1.5) translate(-30%, -20%);
+  z-index: 100;
 }
 
 /* UI-kontroller med faste posisjoner */
