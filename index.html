@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PokeAPIoppgave</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="disable-zoom.js"></script>
+  <script src="zoom-handler.js"></script>
+</head>
+<body>
+ 
+  <div class="game-container">
+    <div class="background"></div>
+    
+    
+    <div class="card-container">
+      <img id="pokemon-card" src="placeholder.jpg" alt="Pokemon kort">
+    </div>
+    
+    
+    <div class="ui-controls">
+      <button id="prev-btn" class="deck-left"></button>
+      <button id="next-btn" class="deck-right"></button>
+      <button id="random-btn" class="random"></button>
+      <button id="facts-btn" class="facts"></button>
+      <input type="text" id="search-input" placeholder="Søk...">
+      <button id="search-btn"></button>
+    </div>
+    
+    
+    <div id="facts-panel" class="facts-panel"> 
+    </div>
+  </div>
+
+  <!-- Hovedscriptet for Pokemon API -->
+  <script src="app.js"></script>
+  
+   <!-- Debug-knapp for utvikling (fjern i produksjon) -->
+
+  <!-- <button onclick="document.querySelector('.game-container').classList.toggle('debug-mode')" 
+    style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+    Toggle Debug
+  </button> -->
+  
+  <!-- Justering-knapp for utvikling (fjern i produksjon) -->
+
+  <!-- <button onclick="window.adjustCardToHand()" 
+    style="position: fixed; top: 40px; right: 10px; z-index: 9999;">
+    Juster Kort
+  </button> -->
+  
+</body>
+</html>

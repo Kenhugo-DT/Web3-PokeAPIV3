@@ -1,0 +1,204 @@
+/* CSS som bevarer elementposisjoner ved zoom */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Hovedcontainer med fast størrelse og posisjon */
+.game-container {
+  position: fixed; /* Fast posisjon i vinduet uansett zoom */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Bakgrunnsbilde med containerstørrelse */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('pokeapibakgrunn25.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000; /* Svart bakgrunn rundt bildet */
+  transform-origin: center; /* Skalering fra midten */
+}
+
+/* Kort-container med absolutt posisjon i forhold til bakgrunnen */
+.card-container {
+  position: absolute;
+  /* Disse koordinatene må justeres for å matche hånden i bakgrunnen */
+  left: 51%;
+  top: 49%;
+  /* Ingen transform her - kortet posisjoneres direkte */
+}
+
+/* Pokemon-kortet med fast størrelse */
+#pokemon-card {
+  position: absolute;
+  width: 215px; /* Fast størrelse på kortet */
+  height: auto;
+  transform: translate(-50%, -50%); /* Sentrerer kortet på posisjonen */
+  margin-top: 50px; /* Skyver kortet nedover */
+  margin-left: 35px; /* Skyver kortet til venstre/høyre */
+}
+
+/* UI-kontroller med faste posisjoner */
+.ui-controls {
+  position: fixed; /* Fast posisjon i vinduet uansett zoom */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Lar klikk gå gjennom til bakgrunnen */
+}
+
+/* Alle knapper og inputs trenger pointer-events: auto */
+.ui-controls button,
+.ui-controls input {
+  pointer-events: auto;
+}
+
+
+.random {
+  position: absolute;
+  top: 24.5%; 
+  left: 28.2%;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background-color: rgba(150, 32, 32, 0);
+  border: none;
+  cursor: pointer;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+/* Deck-knapper */
+.deck-left {
+  position: absolute;
+  bottom: 37%;
+  left: 29%;
+  width: 115px;
+  height: 115px;
+  background-color: rgba(126, 46, 46, 0);
+  border: none;
+  cursor: pointer;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+.deck-right {
+  position: absolute;
+  bottom: 37%;
+  right: 28.4%;
+  width: 115px;
+  height: 105px;
+  background-color: rgba(12, 41, 159, 0);
+  border: none;
+  cursor: pointer;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+/* Facts-knapp */
+.facts {
+  position: absolute;
+  bottom: 15.3%;
+  right: 25.4%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: rgba(4, 130, 6, 0);
+  border: none;
+  cursor: pointer;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+/* Søkefelt */
+#search-input {
+  position: absolute;
+  top: 28.2%;
+  left: 35%;
+  width: 175px;
+  height: 25px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+#search-btn {
+  position: absolute;
+  top: 28.2%;
+  left: 42%;
+  width: 80px;
+  height: 25px;
+  background-color: rgba(116, 100, 100, 0);
+  border: none;
+  cursor: pointer;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+/* Facts panel */
+.facts-panel {
+  display: none;
+  position: fixed; /* Fast posisjon i vinduet uansett zoom */
+  bottom: 25%;
+  right: 15%;
+  width: 300px;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+  border: 1px solid rgba(255, 255, 0, 0.3);
+  pointer-events: auto;
+  max-height: 600px;
+  overflow-y: auto;
+  transform-origin: center; /* Skalering fra midten */
+}
+
+.facts-panel h3 {
+  font-size: '1.8rem';
+  margin-top: 0;
+  color: #ffd700;
+  border-bottom: 1px solid #ffd700;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.facts-panel p {
+  font-size: '2rem';
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Debugging hjelp */
+.debug-mode button,
+.debug-mode input {
+  background-color: rgba(255, 0, 0, 0.3) !important;
+}
+
+/* Ekstra styling for bedre synlighet under utvikling */
+.debug-mode .deck-left { background-color: rgba(255, 0, 0, 0.9) !important; }
+.debug-mode .deck-right { background-color: rgba(0, 255, 0, 0.9) !important; }
+.debug-mode .random { background-color: rgba(0, 0, 255, 0.9) !important; }
+.debug-mode .facts { background-color: rgba(255, 255, 0, 0.9) !important; }
+.debug-mode #search-input { background-color: rgba(255, 0, 255, 0.9) !important; }
+.debug-mode #search-btn { background-color: rgba(0, 255, 255, 0.9) !important; }
+
+/* Spesifikk zoom-håndtering med JavaScript */
+html.zoom-adjusted .game-container {
+  transform-origin: top left;
+}
